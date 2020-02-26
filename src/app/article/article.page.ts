@@ -10,14 +10,14 @@ import { getArticle, getExtraInfo } from '../apis/common';
 })
 export class ArticlePage implements OnInit {
 
-  public article: any = {};
+  public article: any = null;
   public id: number;
   public imageHue: string;
   // 下方评论点赞等数量
   public extraInfo: any;
 
   constructor(
-    public activatedRoute: ActivatedRoute,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   // 获取文章的各种数量

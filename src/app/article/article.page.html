@@ -1,14 +1,33 @@
 <ion-content>
-  <div class="banner">
-    <ion-img [src]="article.image"></ion-img>
-    <div class="text"
-      [ngStyle]="{'background-image': 'linear-gradient(to bottom,'+this.imageHue+'00,'+this.imageHue+'dd,'+this.imageHue+'ff)'}">
-      <h3 class="title">{{article.title}}</h3>
-      <span class="img-source">{{article.image_source}}</span>
+  <!-- 加载状态 -->
+  <div class="loading" *ngIf="!article;else content">
+    <div class="top">
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+    </div>
+    <div class="bottom">
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
     </div>
   </div>
-  <ion-item class="article" [innerHTML]="article.body"></ion-item>
+  <ng-template #content>
+    <div class="content">
+      <div class="banner">
+        <ion-img [src]="article.image"></ion-img>
+        <div class="text"
+          [ngStyle]="{'background-image': 'linear-gradient(to bottom,'+this.imageHue+'00,'+this.imageHue+'dd,'+this.imageHue+'ff)'}">
+          <h3 class="title">{{article.title}}</h3>
+          <span class="img-source">{{article.image_source}}</span>
+        </div>
+      </div>
+      <ion-item class="article" [innerHTML]="article.body"></ion-item>
+    </div>
+  </ng-template>
 </ion-content>
+
 <ion-footer>
   <ion-toolbar>
     <ion-buttons slot="start">
