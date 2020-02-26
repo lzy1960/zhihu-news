@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" text="" [defaultHref]="['/article',id]"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{comments.long_comments.length+comments.short_comments.length}}条评论</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="comment" *ngFor="let item of commentsList">
+    <ion-text color="dark" *ngIf="comments[item.key].length">
+      <h3 class="total">{{comments[item.key].length}}条长评</h3>
+    </ion-text>
+    <ul class="comment-list">
+      <li class="comment-item" *ngFor="let item of comments[item.key]">
+        <div class="left">
+          <ion-avatar class="avatar">
+            <img [src]="item.avatar" />
+          </ion-avatar>
+        </div>
+        <div class="right">
+          <h3 class="author">{{item.author}}</h3>
+          <p class="content">{{item.content}}</p>
+          <div class="bottom">
+            <div class="time">{{item.time*1000|date:'yyyy-MM-dd hh:mm'}}</div>
+            <div class="buttons">
+              <ion-buttons slot="start">
+                <ion-button>
+                  <ion-note *ngIf="item.likes" padding>{{item.likes}}</ion-note>
+                  <ion-icon name="thumbs-up-outline" color="dark"></ion-icon>
+                </ion-button>
+                <ion-button>
+                  <ion-icon name="chatbubble-outline" color="dark"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- <div class="comments" *ngFor="let item of commentsList">
+    <ion-text color="dark" *ngIf="comments[item.key].length">
+      <h3 class="total">{{comments[item.key].length}}条长评</h3>
+    </ion-text>
+    <ion-list>
+      <ion-item lines="full" *ngFor="let item of comments[item.key]" class="comment">
+        <div class="left">
+          <ion-avatar class="avatar">
+            <img [src]="item.avatar" />
+          </ion-avatar>
+        </div>
+        <div class="right">
+          <h3 class="author">{{item.author}}</h3>
+          <p class="content">{{item.content}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div> -->
+</ion-content>

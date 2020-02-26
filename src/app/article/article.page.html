@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="banner">
+    <ion-img [src]="article.image"></ion-img>
+    <div class="text"
+      [ngStyle]="{'background-image': 'linear-gradient(to bottom,'+this.imageHue+'00,'+this.imageHue+'dd,'+this.imageHue+'ff)'}">
+      <h3 class="title">{{article.title}}</h3>
+      <span class="img-source">{{article.image_source}}</span>
+    </div>
+  </div>
+  <ion-item class="article" [innerHTML]="article.body"></ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" icon="chevron-back-outline" text="" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <!-- 评论 -->
+      <ion-button [routerLink]="['/comment',id]">
+        <ion-icon color="dark" name="chatbox-outline"></ion-icon>
+        <ion-note *ngIf="extraInfo" color="dark">{{extraInfo.comments}}</ion-note>
+      </ion-button>
+      <!-- 点赞 -->
+      <ion-button (click)="doLike()">
+        <ion-icon color="dark" name="thumbs-up-outline"></ion-icon>
+        <ion-note *ngIf="extraInfo" color="dark">{{extraInfo.popularity}}</ion-note>
+      </ion-button>
+      <!-- 收藏 -->
+      <ion-button (click)="addToFavorite()">
+        <ion-icon color="dark" name="star-outline"></ion-icon>
+        <!-- <ion-note color="dark">{{extraInfo.comments}}</ion-note> -->
+      </ion-button>
+      <!-- 转发 -->
+      <ion-button (click)="resend()">
+        <ion-icon color="dark" name="arrow-undo-outline"></ion-icon>
+        <!-- <ion-note color="dark">{{extraInfo.comments}}</ion-note> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -6,11 +6,14 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+import { SlideModule } from '../module/slide/slide.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SlideModule,
     RouterModule.forChild([
       {
         path: '',
@@ -18,6 +21,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [ HomePage ]
 })
-export class HomePageModule {}
+export class HomePageModule { }

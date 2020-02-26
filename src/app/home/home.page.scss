@@ -1,31 +1,28 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.today {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    padding: 4px 12px;
+    margin: 10px;
+    .date {
+        flex: 1;
+    }
+    .month {
+        flex: 1;
+    }
 }
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-ion-content ion-toolbar {
-  --background: translucent;
+.news-list {
+    .news-item {
+        .text {
+            .title {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 28px;
+            }
+            .desc {
+                font-size: 14px;
+                color: #7c7c7c;
+            }
+        }
+    }
 }

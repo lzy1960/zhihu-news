@@ -1,5 +1,7 @@
 {
-  "name": "zhihu-news",
-  "integrations": {},
-  "type": "angular"
+    "name": "zhihu-news",
+    "integrations": {
+        "cordova": {}
+    },
+    "type": "angular"
 }

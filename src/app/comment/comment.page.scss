@@ -1,0 +1,50 @@
+ul,
+li,
+ol {
+  text-decoration: none;
+}
+
+.comment {
+  .total {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .comment-list {
+    padding-left: 0;
+    .comment-item {
+      display: flex;
+      padding: 20px 15px;
+      border-bottom: 1px solid #c8c7cc;
+      .left {
+        flex: 0 0 40px;
+        padding-top: 10px;
+      }
+      .right {
+        line-height: 2;
+        flex: 1;
+        margin-left: 15px;
+        .author {
+          font-size: 18px;
+          font-weight: 700;
+        }
+        .content {
+          font-size: 14px;
+          white-space: pre-wrap;
+        }
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+          .time {
+            color: #c8c7cc;
+          }
+          .buttons {
+            ion-button {
+              --padding-start: 10px;
+              --padding-end: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
