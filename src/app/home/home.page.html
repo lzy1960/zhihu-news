@@ -4,7 +4,7 @@
       <div class="date">{{date|date:'d'}}</div>
       <div class="month">{{date|date:'M月'}}</div>
     </ion-card>
-    <ion-title (click)="scrollToTop(500)">知乎日报</ion-title>
+    <ion-title (click)="scrollToTop(500)">仿知乎日报</ion-title>
     <ion-avatar class="avatar" slot="end">
       <img src="assets/icon/favicon.png" />
     </ion-avatar>
@@ -12,11 +12,14 @@
 </ion-header>
 
 <ion-content id="view">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content pulling-icon="refresh-circle-outline" refreshing-spinner="circular"></ion-refresher-content>
+  </ion-refresher>
   <app-slide [newsSlides]="newsSlides" [slideOptions]="slideOptions"></app-slide>
   <ion-list class="news-list" *ngFor="let data of dataList">
-    <ion-label class="divider" *ngIf="!data.is_today">
-      {{data.date | date:'M月d日'}}
-    </ion-label>
+    <ion-item-divider class="divider" *ngIf="!data.is_today">
+      <ion-label>{{data.date | date:'M月d日'}}</ion-label>
+    </ion-item-divider>
     <ion-item lines="full" *ngFor="let news of data.news" class="news-item" [routerLink]="['/article',news.id]">
       <div class="text">
         <h3 class="title">{{news.title}}</h3>

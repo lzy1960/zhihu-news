@@ -21,13 +21,27 @@ export class HomePage implements OnInit {
   public newsSlides: any[] = [];
   // 轮播图的配置
   public slideOptions: object = {};
+  // 是否是刷新操作
+  public refreshing: boolean = false;
 
   constructor(private view: ElementRef) {
 
   }
 
   ngOnInit() {
-    this.getData();
+    this.getData().then(() => {
+      this.getLastData(this.dateStr);
+    });
+  }
+
+  // 下拉刷新
+  doRefresh(event: any) {
+    this.refreshing = true;
+    this.getData().then(() => {
+      this.getLastData(this.dateStr);
+      event.target.complete();
+      this.refreshing = false;
+    });
   }
 
   scrollToTop(duration: number) {
@@ -40,7 +54,11 @@ export class HomePage implements OnInit {
     const res = await getData(query);
     if (res) {
       console.log(res.data);
-      this.dataList.push(res.data);
+      if (this.refreshing) {
+        this.dataList = [res.data];
+      } else {
+        this.dataList.push(res.data);
+      }
       this.dateStr = res.data.date;
       this.newsSlides = res.data.top_stories;
       // 每个轮播图的渐变色转换为16进制颜色

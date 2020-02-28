@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://news-at.zhihu.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

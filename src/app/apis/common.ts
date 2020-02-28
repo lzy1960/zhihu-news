@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const root2 = 'http://news-at.zhihu.com/api/2';
-export const root3 = 'http://news-at.zhihu.com/api/3';
-export const root4 = 'http://news-at.zhihu.com/api/3';
+export const root2 = '/api/2';
+export const root3 = '/api/3';
+export const root4 = '/api/3';
 
 // 获取最新(今天)的数据
 export const getData = (query: any) => axios.get(`${root2}/news/latest`, { params: query });

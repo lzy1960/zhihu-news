@@ -1,5 +1,5 @@
-<ion-slides mode="ios" pager="ios" scrollbar="ios" [options]="slideOptions">
-  <ion-slide *ngFor="let slide of newsSlides" class="banner">
+<ion-slides [pager]="true" [options]="slideOptions">
+  <ion-slide *ngFor="let slide of newsSlides" class="banner" [routerLink]="['/article',slide.id]">
     <ion-img [src]="slide.image"></ion-img>
     <div class="text"
       [ngStyle]="{'background-image': 'linear-gradient(to bottom,'+slide.image_hue+'00,'+slide.image_hue+'ff,'+slide.image_hue+'ff)'}">

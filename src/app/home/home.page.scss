@@ -12,6 +12,9 @@
     }
 }
 .news-list {
+    .divider {
+        --background: #fff;
+    }
     .news-item {
         .text {
             .title {

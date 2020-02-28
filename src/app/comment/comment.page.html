@@ -9,9 +9,9 @@
 
 <ion-content>
   <div class="comment" *ngFor="let item of commentsList">
-    <ion-text color="dark" *ngIf="comments[item.key].length">
-      <h3 class="total">{{comments[item.key].length}}条长评</h3>
-    </ion-text>
+    <ion-item-divider *ngIf="comments[item.key].length">
+      <ion-label class="total" color="dark">{{comments[item.key].length}}条{{item.label}}</ion-label>
+    </ion-item-divider>
     <ul class="comment-list">
       <li class="comment-item" *ngFor="let item of comments[item.key]">
         <div class="left">
